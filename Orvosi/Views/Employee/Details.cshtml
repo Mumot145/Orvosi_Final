@@ -1,0 +1,55 @@
+﻿@model WebApplication2.Models.Employee
+
+
+@{
+    ViewBag.Title = "Random User Information";
+}
+
+<h2>Random User Information</h2>
+
+<table>
+
+    <tr>
+        <td class="tb1">
+            @Model.id
+        </td>
+        <td class="tb2">
+            @Model.first_name
+        </td>
+        <td class="tb2">
+            @Model.last_name
+        </td>
+        <td class="tb2">
+            @Model.email
+        </td>
+        <td class="tb2">
+            @Model.gender
+        </td>
+        <td class="tb2">
+            @Model.ip_address
+        </td>
+    </tr>
+
+</table>
+
+<table style="padding-top:50px;">
+    <tr>
+        <td>
+            <p style="padding-left: 80px;"><input type="button" value="Show Random" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Details", "Employee", new { info = "random" })'" /></p>
+        </td>
+        <td>
+            <p style="padding-left: 80px;"><input type="button" value="Show All" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Details", "Employee", new { info = "all" })'" /></p>
+        </td>
+        <td>
+            <img style="padding-left: 80px;" src="/Content/shortline.jpg" />
+        </td>
+        @using (Html.BeginForm("SearchDetails", "Employee"))
+        {
+            <td style="padding-left: 80px;">
+                <input type="text" name="search" />
+            </td>
+            <td><input type="submit" style="padding-left: 10px;" class="btn btn-primary btn-lg" value="Search" /></td>
+        }
+
+    </tr>
+</table>

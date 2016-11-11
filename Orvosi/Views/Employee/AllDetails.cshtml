@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "All User Information";
+}
+
+<h2>All User Information</h2>
+
+<table>
+    <tr>
+        <td>
+            <p style="padding-left: 80px;"><input type="button" value="Show Random" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Details", "Employee", new { info = "random" })'" /></p>
+        </td>
+        <td>
+            <p style="padding-left: 80px;"><input type="button" value="Show All" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Details", "Employee", new { info = "all" })'" /></p>
+        </td>
+        <td>
+            <img style="padding-left: 80px;" src="/Content/shortline.jpg" />
+        </td>
+        @using (Html.BeginForm("SearchDetails", "Employee"))
+        {
+            <td style="padding-left: 80px;">
+                <input type="text" name="search" />
+            </td>
+            <td><input type="submit" style="padding-left: 10px;" class="btn btn-primary btn-lg" value="Search" /></td>
+        }
+
+    </tr>
+</table>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr style="border:thick; border-color:black">
+            <td class="tb1">
+                @item.id
+            </td>
+            <td class="tb2">
+                @item.first_name
+            </td>
+            <td class="tb2">
+                @item.last_name
+            </td>
+            <td class="tb2">
+                @item.email
+            </td>
+            <td class="tb2">
+                @item.gender
+            </td>
+            <td class="tb2">
+                @item.ip_address
+            </td>
+        </tr>
+    }
+</table>
